@@ -14,11 +14,25 @@ public class GeheimeCode {
         laResistanceMembers = addMembers(laResistanceMembers, "Henrie");
         laResistanceMembers = addMembers(laResistanceMembers, "Piet");
         laResistanceMembers = addMembers(laResistanceMembers, "LeDroitCestMoi");
+        laResistanceMembers = addMembers(laResistanceMembers, "Bert");
+
+        System.out.println(laResistanceMembers);
+
+
+        char test = 'a';
+        char test2 = 'b';
+        System.out.println(charToNumber(test));
+        System.out.println(charToNumber(test2));
+
+
+
 
         /*
         Opdracht 1: Hierboven zijn via de methode addMembers, leden aan de lijst toegevoegd. Pas de Methode zo aan dat
          er alleen unieke namen in voor mogen komen.
          */
+
+
 
         /*
         Opdracht 2: La Resistance wil niet dat de lijst met namen zo in handen komt te vallen van de bezetter. Versleutel
@@ -30,6 +44,8 @@ public class GeheimeCode {
         b) Als de positie in de lijst een even getal is, dan moet de cijfercombinatie omgedraaid worden.
          */
 
+
+
         /*
         Opdracht 3:
         Schrijf een methode die de versleutelde lijst kan omzetten naar de ontsleutelde lijst.
@@ -37,7 +53,34 @@ public class GeheimeCode {
     }
 
     private static List<String> addMembers(List<String> members, String name) {
-        members.add(name);
+        boolean isUnique = true;
+
+        for (String member : members) {
+            if (name.equalsIgnoreCase(member)) {
+                isUnique = false;
+                break;
+            }
+        }
+
+        if (isUnique) {
+            members.add(name);
+        }
+
         return members;
     }
+
+    private static String charToNumber(char ch) {
+        char tempchar = Character.toLowerCase(ch);
+        int number = (tempchar - 'a') + 1;
+
+        if (Character.isUpperCase(ch)) {
+            number = 100 + number;
+        }
+
+        return Integer.toString(number);
+
+
+    }
+
+
 }
